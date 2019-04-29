@@ -54,17 +54,17 @@
       });
 
       var cancelBtn = document.getElementById('cancelBtn');
-      cancelBtn.addEventListener("ontouchstart", function(){
+      cancelBtn.addEventListener("tap", function(){
           dialog.className = 'dialog hidden'
       });
 
       var dialogMask = document.getElementById('dialogMask');
-      dialogMask.addEventListener("ontouchstart", function(){
+      dialogMask.addEventListener("tap", function(){
           dialog.className = 'dialog hidden'
       });
 
       var confimBtn = document.getElementById('confimBtn');
-      confimBtn.addEventListener("ontouchstart", function(){
+      confimBtn.addEventListener("tap", function(){
           dialog.className = 'dialog hidden';
           console.log('ok');
           window.location.href="weixin://"

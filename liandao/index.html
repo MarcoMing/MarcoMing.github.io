@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no, email=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <title>联系我们</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div class="logo">
+        <img src="./imgs/logo.png" alt="莲道" title="莲道" />
+    </div>
+    <div class="content">
+        <div id="follow" class="btn" data-clipboard-text="15179719343">+ 关注</div>
+        <p>官方认证</p>
+        <p>企业号认证</p>
+        <p>专业高效</p>
+        <p>给你前所未有的安心</p>
+    </div>
+    <div class="dialog hidden" id="dialog">
+        <div class="dialog-mask" id="dialogMask"></div>
+        <div class="dialog-content">
+            <img src="./imgs/check-success.png"  alt="莲道" title="莲道"  />
+            <h3 class="copy-s">复制成功</h3>
+            <p class="text">您已成功复制微信号，是否立即跳转到微信搜索该微信号？</p>
+            <div class="dialog-action">
+               <div class="dialog-btn dialog-cancel" id="cancelBtn">取消</div>
+               <div class="dialog-btn dialog-confim" id="confimBtn">确定</div>
+            </div>
+        </div>
+
+    </div>
+  </body>
+  <script src="./js/clipboard.min.js"></script>
+  <script type="text/javascript">
+      var clipboard = new ClipboardJS('.btn');
+
+      var dialog = document.getElementById('dialog');
+
+      clipboard.on('success', function(e) {
+          dialog.className = 'dialog'
+          e.clearSelection();
+      });
+
+      clipboard.on('error', function(e) {
+
+      });
+
+      var cancelBtn = document.getElementById('cancelBtn');
+      cancelBtn.addEventListener("click", function(){
+          dialog.className = 'dialog hidden'
+      });
+
+      var dialogMask = document.getElementById('dialogMask');
+      dialogMask.addEventListener("click", function(){
+          dialog.className = 'dialog hidden'
+      });
+
+      var confimBtn = document.getElementById('confimBtn');
+      confimBtn.addEventListener("click", function(){
+          dialog.className = 'dialog hidden';
+          console.log('ok');
+          window.location.href="weixin://"
+      });
+
+  </script>
+</html>

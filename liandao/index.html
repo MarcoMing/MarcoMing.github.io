@@ -42,9 +42,8 @@
   <script type="text/javascript">
       var clipboard = new ClipboardJS('.btn');
 
-      var dialog = document.getElementById('dialog');
-
       clipboard.on('success', function(e) {
+          var dialog = document.getElementById('dialog');
           dialog.className = 'dialog'
           e.clearSelection();
       });
@@ -54,17 +53,20 @@
       });
 
       var cancelBtn = document.getElementById('cancelBtn');
-      cancelBtn.addEventListener("tap", function(){
+      cancelBtn.addEventListener("click", function(){
+          var dialog = document.getElementById('dialog');
           dialog.className = 'dialog hidden'
       });
 
       var dialogMask = document.getElementById('dialogMask');
-      dialogMask.addEventListener("tap", function(){
+      dialogMask.addEventListener("click", function(){
+          var dialog = document.getElementById('dialog');
           dialog.className = 'dialog hidden'
       });
 
       var confimBtn = document.getElementById('confimBtn');
-      confimBtn.addEventListener("tap", function(){
+      confimBtn.addEventListener("click", function(){
+          var dialog = document.getElementById('dialog');
           dialog.className = 'dialog hidden';
           console.log('ok');
           window.location.href="weixin://"

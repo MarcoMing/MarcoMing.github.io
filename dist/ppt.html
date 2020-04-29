@@ -1,0 +1,40 @@
+<!doctype html><html><head><meta charset=UTF-8><title>聊聊脚手架的构建 - By 谢明财</title><link rel=stylesheet href=//cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css><link rel=stylesheet href=//cdn.staticfile.org/prism/1.15.0/themes/prism.min.css><link rel=stylesheet href=//cdn.staticfile.org/KaTeX/0.10.0-rc.1/katex.min.css><link href=./css/chunk-vendors.4e4765ff.css rel=stylesheet></head><body><div><article id=webslides><section slide class="slide bg-black" image="/bg01.jpg .dark"><span class="background dark" style="background-image:url('/bg01.jpg')"></span><div class=wrap wrap=true><h1 class="aligncenter text-landing text-shadow">聊聊脚手架的构建</h1></div><footer><div class=wrap><p><a href=javascript:void(0) class=alignright><i class="fa fa-twitter"></i> Speaker@xiemingcai</a></p></div></footer></section><section slide class="slide bg-black"><div class=wrap wrap=true><div class="card-50 bg-white"><div class=flex-content><h4>前端工程化</h4><p class="tobuild text-intro animated fadeInUp delay-500">本质上就是将前端开发流程，标准化、规范化、工具化、自动化、简单化。通过规范和工具来提高前端应用质量及开发效率</p><ul class="tobuild description animated fadeInUp delay-900"><li><span class=text-label>Role:</span> Frontend</li><li><span class=text-label>client:</span> Node</li><li><span class=text-label>year:</span> 2018</li></ul></div><figure><img src=/ppt-img.png alt="" class=tobuild></figure></div></div></section><section slide class="slide bg-black" :class=size-60><div class="wrap size-60" wrap=true><h1>脚手架</h1><hr><p class="build fadeInLeft size-100 text-intro"><strong>脚手架用于快速生成新项目的目录模板，并集成一系列体系化工具的安装，能够提升前端开发人员的效率，减少copy操作</strong></p></div></section><section slide class="slide bg-black" :class="aligncenter size-60"><div class="wrap aligncenter size-60" wrap=true><h3>常见的脚手架</h3><hr><ul class="build text-intro"><li><a href=https://github.com/facebook/create-react-app target=_blank>create-react-app</a> react官方脚手架</li><li><a href=https://github.com/vuejs/vue-cli target=_blank>vue-cli</a> vue官方脚手架</li><li><a href=https://github.com/angular/angular-cli target=_blank>angular-cli</a> angular官方脚手架</li><li><a href=https://github.com/yeoman/yeoman target=_blank>Yeoman</a> 前端自动化脚手架工具</li><li>...</li></ul></div></section><section slide class="slide bg-black" :class="aligncenter size-50"><div class="wrap aligncenter size-50" wrap=true><h2>业务项目现状</h2><hr><ol class="text-intro text-cols build"><li class=fadeInLeft><strong>新建项目时，重复性工作过多，繁琐而且浪费时间</strong></li><li class=fadeInLeft><strong>copy过来的模板容易存在无关的代码</strong></li><li class=fadeInRight><strong>项目中有很多需要配置的地方，容易忽略一些配置点</strong></li><li class=fadeInRight><strong>花费在构建上的时间过长</strong></li><li class=fadeInRight><strong>框架也会不断迭代，人工建项目不知道最新版本号是多少，使用的依赖都是什么版本，很容易bug一大堆 。</strong></li></ol></div></section><section slide class=slide :class=size-50><div class="wrap size-50" wrap=true><h2>第一步</h2><hr><ul><li>bin字段指定,允许控制台使用你的命令</li></ul><pre class=language-html><code class=language-html>package.json
+{
+  ...
+  "bin": {
+    "peer": "index.js"
+  },
+  ...
+}
+</code></pre></div></section><section slide class=slide :class="size-30 aligncenter"><div class="wrap size-30 aligncenter" wrap=true><h3>第二步</h3><hr><pre class="animated fadeInUp language-textile language-textile"><code class="animated fadeInUp language-textile"><span class="token phrase"><span class="token list"><span class="token punctuation">#</span> 注册全局软连接</span>
+$ npm link</span>
+
+<span class="token phrase"><span class="token list"><span class="token punctuation">#</span> 卸载全局软连接</span>
+$ npm unlink</span>
+
+</code></pre></div></section><section slide class="slide bg-black" :class="aligncenter size-60"><div class="wrap aligncenter size-60" wrap=true><h3>开发脚手架我们需要用到的三方库</h3><hr><ul class="text-intro build"><li><a href=https://github.com/tj/commander.js target=_blank>commander</a> 处理控制台命令</li><li><a href=https://github.com/chalk/chalk target=_blank>chalk</a> 五彩斑斓的控制台</li><li><a href=https://github.com/flatiron/prompt target=_blank>prompt</a> 控制台询问</li><li><a href=https://github.com/shelljs/shelljs target=_blank>shelljs</a> 执行终端命令</li><li><a href=https://github.com/jprichardson/node-fs-extra target=_blank>fs-extra</a> 更友好的fs操作</li><li>...</li></ul></div></section><section slide class=slide :class="aligncenter size-60"><div class="wrap aligncenter size-60" wrap=true><h3>第三步</h3><hr><pre class="text-intro animated fadeInUp language-textile language-textile"><code class="text-intro animated fadeInUp language-textile"><span class="token phrase">const program = require('commander');
+program
+  .version('0.0.1')
+  .command('init', '获取初始化配置文件peer.js')
+  .command('create', '创建新项目')
+  .command('server', '启动本地server，-p 指定端口')
+  .command('build', '发布打包')
+  .parse(process.argv);
+</span></code></pre></div></section><section slide class="slide bg-black" :class="aligncenter size-60"><div class="wrap aligncenter size-60" wrap=true><h3>第四步</h3><hr><p class="tobuild text-intro">具体脚手架命令的实现</p></div></section><section slide class="slide bg-black aligncenter" image="/bg02.jpg .anim"><span class="background anim" style="background-image:url('/bg02.jpg')"></span><div class=wrap wrap=true><h2>总结</h2><hr><ul class="text-intro build"><li>脚手架能提高项目初始化搭建的效能，减少搭建项目所消耗的时间</li><li>将项目模板与脚手架工具分离，可以更好的维护模板和脚手架工具</li><li>面向命令行编程</li></ul></div></section><section slide class="slide bg-black" :class="aligncenter size-60"><div class="wrap aligncenter size-60" wrap=true><h2>End</h2><hr><h3>感谢观看</h3></div></section></article></div><script src=background.js></script><script>window.pluginsOptions = {}
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    let isPrintMode = false;
+    if(~location.search.indexOf('print-pdf')){
+        isPrintMode = true;
+        WebSlides.registerPlugin('scroll', function(){});
+    }
+    const ws = new WebSlides({
+        loop: false
+    })
+    window.wsInstance = ws;
+    if(isPrintMode){
+        ws.slides.forEach(s=>s.show())
+    }
+}, false)</script><script src=./js/chunk-vendors.js></script><script src=./js/ppt.js></script></body></html>

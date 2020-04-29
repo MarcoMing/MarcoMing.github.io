@@ -1,0 +1,2 @@
+# MarcoMing.github.io
+hexo
